@@ -11,4 +11,19 @@
       <ProjectReference Include="..\ObjectPool\ObjectPool.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Model\NonGeneric\**" />
+      <Compile Remove="Model\Generic\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Model\NonGeneric\**" />
+      <EmbeddedResource Remove="Model\Generic\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Model\NonGeneric\**" />
+      <None Remove="Model\Generic\**" />
+    </ItemGroup>
+
 </Project>

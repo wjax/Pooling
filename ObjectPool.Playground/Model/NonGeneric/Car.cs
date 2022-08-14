@@ -13,6 +13,6 @@ public class Car : Vehicle, IPoolable
     
     public void Dispose()
     {
-        ObjectPool<Car>.ReturnToPool(this);
+        ObjectPool.ReturnToPool(this);
     }
 }

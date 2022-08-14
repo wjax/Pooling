@@ -3,12 +3,34 @@
 using ObjectPool;
 using ObjectPool.Playground.Model;
 
-Console.WriteLine("Hello, World!");
+// Console.WriteLine("Generic");
+//
+// Console.WriteLine($"Objects in Pool: {GenericObjectPool<GenericPooledCar>.ObjectsInPool}");
+// {
+//     using var bmwSerie3 = GenericObjectPool<GenericPooledCar>.RentFromPool();
+//     Console.WriteLine($"Objects in Pool: {GenericObjectPool<GenericPooledCar>.ObjectsInPool}");
+// }
+// Console.WriteLine($"Objects in Pool: {GenericObjectPool<GenericPooledCar>.ObjectsInPool}");
+//
+// Console.WriteLine();
+// Console.WriteLine();
+//
+// Console.WriteLine("Non - Generic");
+//
+// Console.WriteLine($"Objects in Pool: {ObjectPool.ObjectPool.ObjectsInPool<Car>()}");
+// {
+//     using var bmwSerie3 = ObjectPool.ObjectPool.RentFromPool<Car>();
+//     Console.WriteLine($"Objects in Pool: {ObjectPool.ObjectPool.ObjectsInPool<Car>()}");
+// }
+// Console.WriteLine($"Objects in Pool: {ObjectPool.ObjectPool.ObjectsInPool<Car>()}");
 
-Console.WriteLine($"Objects in Pool: {ObjectPool<Car>.ObjectsInPool}");
+Console.WriteLine($"Objects in Pool: {GenericPool<Car>.Count}");
 {
-    using var bmwSerie3 = ObjectPool<Car>.RentFromPool();
-    Console.WriteLine($"Objects in Pool: {ObjectPool<Car>.ObjectsInPool}");
+    var bmwSerie3 = GenericPool<Car>.Get();
+    Console.WriteLine($"Objects in Pool: {GenericPool<Car>.Count}");
+    
+    Vehicle vehicle = bmwSerie3;
+    vehicle.ReturnToPool();
 }
-Console.WriteLine($"Objects in Pool: {ObjectPool<Car>.ObjectsInPool}");
+Console.WriteLine($"Objects in Pool: {GenericPool<Car>.Count}");
 
