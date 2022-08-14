@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectPool", "ObjectPool\ObjectPool.csproj", "{DBF52575-DCE8-4F17-BB7C-C2AC02B09A96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectPool.Playground", "ObjectPool.Playground\ObjectPool.Playground.csproj", "{FD754D6E-0C2F-4665-9B66-0AC2C9D695FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBF52575-DCE8-4F17-BB7C-C2AC02B09A96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBF52575-DCE8-4F17-BB7C-C2AC02B09A96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBF52575-DCE8-4F17-BB7C-C2AC02B09A96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBF52575-DCE8-4F17-BB7C-C2AC02B09A96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD754D6E-0C2F-4665-9B66-0AC2C9D695FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD754D6E-0C2F-4665-9B66-0AC2C9D695FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD754D6E-0C2F-4665-9B66-0AC2C9D695FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD754D6E-0C2F-4665-9B66-0AC2C9D695FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
