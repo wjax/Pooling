@@ -6,7 +6,7 @@
         <Nullable>enable</Nullable>
         <WarningsAsErrors>Nullable</WarningsAsErrors>
         <Version>0.2.1</Version>
-        <PackageVersion>0.2.0</PackageVersion>
+        <PackageVersion>0.2.1</PackageVersion>
         <Company>29Qbits</Company>
         <Authors>Jesus Alvarez</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
