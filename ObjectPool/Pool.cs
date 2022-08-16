@@ -6,10 +6,10 @@ namespace ObjectPool;
 /// A pool of objects that can be reused to manage memory efficiently.
 /// </summary>
 /// <typeparam name="T">The type of object that is pooled.</typeparam>
-public static class GenericPool<T> where T : IPoolable, new()
+public static class Pool<T> where T : IPoolable, new()
 {
     // The queue that holds the items
-    private static ConcurrentBag<IPoolable> _objects = new ();
+    private static Stack<IPoolable> _objects = new ();
     // The method that creates a new item
     public static Func<T> NewItemMethod = () => new T();
     // The maximum size
@@ -18,7 +18,7 @@ public static class GenericPool<T> where T : IPoolable, new()
     /// <summary>
     /// The constructor.
     /// </summary>
-    static GenericPool()
+    static Pool()
     { }
 
     /// <summary>
@@ -38,7 +38,10 @@ public static class GenericPool<T> where T : IPoolable, new()
 
         item.Reset();
 
-        _objects.Add(item);
+        lock (_objects)
+        {
+            _objects.Push(item);
+        }
     }
 
     /// <summary>
@@ -48,13 +51,21 @@ public static class GenericPool<T> where T : IPoolable, new()
     public static T Get()
     {
         IPoolable? item;
-        if (_objects.TryTake(out item) is false)
+        bool exists = false;
+        
+        lock (_objects)
         {
-            item = NewItemMethod();
-            item.ReturnToPool = () => Return(item);
+            exists = _objects.TryPop(out item);
         }
         
-        return (T)item;
+        if (!exists)
+        {
+            item = NewItemMethod();
+            IPoolable itemAvoidClosure = item;
+            item.ReturnToPool = () => Return(itemAvoidClosure);
+        }
+        
+        return (T)item!;
     } 
 
     public static int Count => _objects.Count;

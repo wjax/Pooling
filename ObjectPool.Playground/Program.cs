@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using ObjectPool;
+using ObjectPool.Native;
 using ObjectPool.Playground.Model;
 
 // Console.WriteLine("Generic");
@@ -24,13 +25,25 @@ using ObjectPool.Playground.Model;
 // }
 // Console.WriteLine($"Objects in Pool: {ObjectPool.ObjectPool.ObjectsInPool<Car>()}");
 
-Console.WriteLine($"Objects in Pool: {GenericPool<Car>.Count}");
+// Console.WriteLine($"Objects in Pool: {GenericPool<Car>.Count}");
+// {
+//     var bmwSerie3 = GenericPool<Car>.Get();
+//     Console.WriteLine($"Objects in Pool: {GenericPool<Car>.Count}");
+//     
+//     Vehicle vehicle = bmwSerie3;
+//     vehicle.ReturnToPool();
+// }
+// Console.WriteLine($"Objects in Pool: {GenericPool<Car>.Count}");
+
+Console.WriteLine($"Objects in Pool: {NativePool<Car>.Count}");
 {
-    var bmwSerie3 = GenericPool<Car>.Get();
-    Console.WriteLine($"Objects in Pool: {GenericPool<Car>.Count}");
-    
-    Vehicle vehicle = bmwSerie3;
-    vehicle.ReturnToPool();
+    var bmwSerie3 = NativePool<Car>.Get();
+    Console.WriteLine($"Objects in Pool: {NativePool<Car>.Count}");
+
+    bmwSerie3.ReturnToPool();
+
+    //Vehicle vehicle = bmwSerie3;
+    //vehicle.ReturnToPool();
 }
-Console.WriteLine($"Objects in Pool: {GenericPool<Car>.Count}");
+Console.WriteLine($"Objects in Pool: {NativePool<Car>.Count}");
 
