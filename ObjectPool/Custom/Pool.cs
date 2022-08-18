@@ -1,6 +1,6 @@
 ﻿using System.Collections.Concurrent;
 
-namespace ObjectPool;
+namespace ObjectPool.Custom;
 
 /// <summary>
 /// A pool of objects that can be reused to manage memory efficiently.
@@ -9,17 +9,17 @@ namespace ObjectPool;
 public static class Pool<T> where T : IPoolable, new()
 {
     // The queue that holds the items
-    private static Stack<IPoolable> _objects = new ();
-    // The method that creates a new item
-    public static Func<T> NewItemMethod = () => new T();
-    // The maximum size
-    public static int MaxPoolSize = 10;
-
+    private static Stack<IPoolable> _objects = new();
+    
     /// <summary>
-    /// The constructor.
+    /// Func that creates the objects. It can be assigned before getting objects
     /// </summary>
-    static Pool()
-    { }
+    public static Func<T> NewItemMethod = () => new T();
+    
+    /// <summary>
+    /// Maximum capacity of the pool. Default: 10
+    /// </summary>
+    public static int MaxPoolSize = 10;
 
     /// <summary>
     /// Return an item into the pool for later re-use, and resets it state if a reset method was provided to the constructor.
@@ -52,21 +52,24 @@ public static class Pool<T> where T : IPoolable, new()
     {
         IPoolable? item;
         bool exists = false;
-        
+
         lock (_objects)
         {
             exists = _objects.TryPop(out item);
         }
-        
+
         if (!exists)
         {
             item = NewItemMethod();
             IPoolable itemAvoidClosure = item;
             item.ReturnToPool = () => Return(itemAvoidClosure);
         }
-        
-        return (T)item!;
-    } 
 
+        return (T)item!;
+    }
+
+    /// <summary>
+    /// Number of items in the Pool
+    /// </summary>
     public static int Count => _objects.Count;
 }

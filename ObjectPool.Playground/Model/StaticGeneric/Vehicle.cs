@@ -1,4 +1,4 @@
-﻿namespace ObjectPool.Playground.Model;
+﻿namespace ObjectPool.Playground.Model.StaticGeneric;
 
 public class Vehicle : IPoolable
 {

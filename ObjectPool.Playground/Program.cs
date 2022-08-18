@@ -2,7 +2,7 @@
 
 using ObjectPool;
 using ObjectPool.Native;
-using ObjectPool.Playground.Model;
+using ObjectPool.Playground.Model.WithDispose;
 
 // Console.WriteLine("Generic");
 //
@@ -35,14 +35,15 @@ using ObjectPool.Playground.Model;
 // }
 // Console.WriteLine($"Objects in Pool: {GenericPool<Car>.Count}");
 
-Console.WriteLine($"Objects in Pool: {NativePool<Car>.Count}");
+//Console.WriteLine($"Objects in Pool: {NativePool<Car>.Count}");
 {
-    var bmwSerie3 = NativePool<Car>.Get();
+    var bmwSerie3 = Car.Get();
     Console.WriteLine($"Objects in Pool: {NativePool<Car>.Count}");
 
-    bmwSerie3.ReturnToPool();
+    //bmwSerie3.ReturnToPool();
 
-    //Vehicle vehicle = bmwSerie3;
+    Vehicle vehicle = bmwSerie3;
+    vehicle.Dispose();
     //vehicle.ReturnToPool();
 }
 Console.WriteLine($"Objects in Pool: {NativePool<Car>.Count}");

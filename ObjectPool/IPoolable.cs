@@ -7,6 +7,7 @@ public interface IPoolable
 {
     /// <summary>
     /// Implements the logic to reset the object to its initial state.
+    /// It will be called by the Pool itself, no need to call it explicitly
     /// </summary>
     void Reset();
 

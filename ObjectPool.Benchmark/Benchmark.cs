@@ -1,6 +1,7 @@
 ﻿using BenchmarkDotNet.Attributes;
 using Microsoft.Extensions.ObjectPool;
 using ObjectPool.Benchmark.Model.StaticGeneric;
+using ObjectPool.Custom;
 using ObjectPool.Native;
 
 namespace ObjectPool.Benchmark;
