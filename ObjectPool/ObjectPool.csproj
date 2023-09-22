@@ -12,6 +12,7 @@
         <Authors>Jesus Alvarez</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <RepositoryUrl>https://github.com/wjax/Pooling</RepositoryUrl>
+	<LangVersion>preview</LangVersion>
     </PropertyGroup>
 
     <PropertyGroup>
